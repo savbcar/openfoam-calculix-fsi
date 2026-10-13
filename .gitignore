@@ -6,37 +6,26 @@ __pycache__/
 *.egg-info/
 build/
 dist/
-# Solver-generated files
+
+# Windows metadata
+*:Zone.Identifier
+
+# OpenFOAM runtime/generated files
 cases/openfoam13/panel/[1-9]*/
 cases/openfoam13/panel/constant/polyMesh/
 cases/openfoam13/panel/constant/extendedFeatureEdgeMesh/
-cases/openfoam13/panel/log.*
-cases/openfoam13/panel/postProcessing/
-*.frd
-*.dat
-*.sta
-*.cvg
-# Keep portfolio reference results committed
-!results/reference/**
-
-# Windows download metadata
-*:Zone.Identifier
-
-# OpenFOAM generated/runtime data
-cases/openfoam13/panel/[1-9]*/
-cases/openfoam13/panel/constant/polyMesh/
 cases/openfoam13/panel/postProcessing/
 cases/openfoam13/panel/log.*
 
-# CFD convergence working cases - huge solver data
+# CFD convergence working cases
 results/cfd_convergence/case_*/
 
-# FEA convergence solver working directories
+# FEA convergence working cases
 results/fea_convergence/coarse/
 results/fea_convergence/medium/
 results/fea_convergence/fine/
 
-# CalculiX generated solver files
+# CalculiX raw/generated files
 *.frd
 *.dat
 *.sta
@@ -44,7 +33,10 @@ results/fea_convergence/fine/
 *.12d
 spooles.out
 
-# Crash dumps / ParaView helpers
+# Crash / visualization helpers
 core
 core.*
 *.foam
+
+# Keep compact portfolio/reference results
+!results/reference/**

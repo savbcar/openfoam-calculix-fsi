@@ -1,5 +1,7 @@
 # OpenFOAM -> CalculiX One-Way FSI Demonstrator
 
+[![CI](https://github.com/savbcar/openfoam-calculix-fsi/actions/workflows/ci.yml/badge.svg)](https://github.com/savbcar/openfoam-calculix-fsi/actions/workflows/ci.yml)
+
 A portfolio-grade, auditable one-way fluid-structure interaction workflow for a thin aluminium cantilever panel in cross-flow:
 
 **OpenFOAM Foundation v13 -> wall pressure -> Python mapping/verification -> CalculiX shell loads -> structural response.**

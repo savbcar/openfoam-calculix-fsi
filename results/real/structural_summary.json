@@ -1,0 +1,13 @@
+{
+  "solver": "CalculiX",
+  "version": "2.17",
+  "job_finished": true,
+  "pressure_sign": -1.0,
+  "tip_ux_mean_m": 0.004005812769230769,
+  "tip_ux_min_m": 0.004002654,
+  "tip_ux_max_m": 0.004008031,
+  "tip_ux_max_abs_m": 0.004008031,
+  "max_integration_point_von_mises_pa": 7105392.656178135,
+  "displacement_nodes_parsed": 403,
+  "stress_rows_parsed": 2880
+}
