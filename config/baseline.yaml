@@ -1,0 +1,26 @@
+geometry:
+  length_m: 0.300
+  width_m: 0.120
+  thickness_m: 0.002
+  shell_ny: 30
+  shell_nz: 12
+material:
+  youngs_modulus_pa: 6.9E+10
+  poisson_ratio: 0.33
+fluid:
+  density_kg_m3: 1.20
+  dynamic_viscosity_pa_s: 1.80E-5
+  velocity_m_s: 15.0
+mapping:
+  method: linear
+  normal_threshold: 0.70
+  max_force_error_pct: 2.0
+  max_moment_error_pct: 3.0
+synthetic:
+  source_ny: 36
+  source_nz: 16
+  pressure_scale_pa: 160.0
+calculix:
+  executable: ccx
+  job_name: panel
+  pressure_sign: -1.0

@@ -1,0 +1,46 @@
+{
+  "mode": "synthetic_verification",
+  "conservation": {
+    "force_x_cfd_n": 6.785626942152913,
+    "force_x_mapped_n": 6.785218824341281,
+    "force_x_error_pct": 0.006014445166392565,
+    "root_moment_z_cfd_nm": -1.0067454003418908,
+    "root_moment_z_mapped_nm": -1.0066987669866125,
+    "root_moment_z_error_pct": 0.004632090224835117,
+    "force_vector_error_pct": 0.006014445166392565
+  },
+  "structural_reference": {
+    "tip_deflection_m": 0.004066053400516662,
+    "root_shear_n": 6.785218824304568,
+    "root_moment_nm": 1.0066987669693919,
+    "root_bending_stress_pa": 12583734.5871174
+  },
+  "mapping_convergence": [
+    {
+      "source_faces": 144.0,
+      "force_error_pct": 0.104273377811716,
+      "moment_error_pct": 0.08346232410480231
+    },
+    {
+      "source_faces": 576.0,
+      "force_error_pct": 0.09114839149112683,
+      "moment_error_pct": 0.083566763144607
+    },
+    {
+      "source_faces": 2304.0,
+      "force_error_pct": 0.006014445166392565,
+      "moment_error_pct": 0.004632090224835117
+    },
+    {
+      "source_faces": 9216.0,
+      "force_error_pct": 0.019246159785182407,
+      "moment_error_pct": 0.018373417269091148
+    }
+  ],
+  "acceptance": {
+    "max_force_error_pct": 2.0,
+    "max_moment_error_pct": 3.0,
+    "force_pass": true,
+    "moment_pass": true
+  }
+}

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"
+command -v foamRun >/dev/null || { echo "foamRun not found. Source /opt/openfoam13/etc/bashrc"; exit 2; }
+blockMesh | tee log.blockMesh
+snappyHexMesh -overwrite | tee log.snappyHexMesh
+checkMesh | tee log.checkMesh
+foamRun | tee log.foamRun

@@ -1,0 +1,9 @@
+{
+  "force_x_cfd_n": 6.888325423611748,
+  "force_x_mapped_n": 6.9497471675961755,
+  "force_x_error_pct": 0.8916788944652084,
+  "root_moment_z_cfd_nm": -1.0329529730464675,
+  "root_moment_z_mapped_nm": -1.0423092802238594,
+  "root_moment_z_error_pct": 0.9057824917041013,
+  "force_vector_error_pct": 0.891683378139551
+}

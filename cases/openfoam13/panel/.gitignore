@@ -1,0 +1,9 @@
+
+# Local solver convergence working cases
+results/cfd_convergence/case_*/
+results/fea_convergence/coarse/
+results/fea_convergence/medium/
+results/fea_convergence/fine/
+
+# ParaView launcher files
+*.foam

@@ -1,0 +1,22 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version: 13 (Foundation)
+    \\  /    A nd           |
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format ascii;
+    class dictionary;
+    location "constant";
+    object momentumTransport;
+}
+
+simulationType RAS;
+RAS
+{
+    model kOmegaSST;
+    turbulence on;
+    viscosityModel Newtonian;
+}

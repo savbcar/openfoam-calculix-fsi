@@ -1,0 +1,98 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version: 13 (Foundation)
+    \\  /    A nd           |
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format ascii;
+    class dictionary;
+    location "system";
+    object snappyHexMeshDict;
+}
+
+castellatedMesh true;
+snap true;
+addLayers true;
+
+geometry
+{
+    panel
+    {
+        type triSurface;
+        file "panel.stl";
+        patchInfo { type wall; }
+    }
+}
+
+castellatedMeshControls
+{
+    maxLocalCells 400000;
+    maxGlobalCells 1200000;
+    minRefinementCells 0;
+    nCellsBetweenLevels 3;
+    features ();
+    refinementSurfaces
+    {
+        panel { level (3 4); }
+    }
+    resolveFeatureAngle 30;
+    insidePoint (0.30 0.45 0.30);
+    allowFreeStandingZoneFaces false;
+}
+
+snapControls
+{
+    nSmoothPatch 3;
+    tolerance 2.0;
+    nSolveIter 100;
+    nRelaxIter 5;
+    nFeatureSnapIter 10;
+    implicitFeatureSnap true;
+    explicitFeatureSnap false;
+    multiRegionFeatureSnap false;
+}
+
+addLayersControls
+{
+    relativeSizes true;
+    layers { panel { nSurfaceLayers 3; } }
+    expansionRatio 1.2;
+    finalLayerThickness 0.35;
+    minThickness 0.08;
+    nGrow 0;
+    featureAngle 60;
+    slipFeatureAngle 30;
+    nRelaxIter 5;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals 3;
+    nSmoothThickness 10;
+    maxFaceThicknessRatio 0.5;
+    maxThicknessToMedialRatio 0.3;
+    minMedianAxisAngle 90;
+    nBufferCellsNoExtrude 0;
+    nLayerIter 50;
+    nRelaxedIter 20;
+}
+
+meshQualityControls
+{
+    maxNonOrtho 65;
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+    maxConcave 80;
+    minVol -1e30;
+    minTetQuality -1;
+    minTwist 0.01;
+    minDeterminant 0.001;
+    minFaceWeight 0.05;
+    minVolRatio 0.01;
+    nSmoothScale 4;
+    errorReduction 0.75;
+    relaxed { maxNonOrtho 75; }
+}
+
+debug 0;
+mergeTolerance 1e-6;
