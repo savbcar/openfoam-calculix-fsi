@@ -1,0 +1,91 @@
+{
+  "project": "OpenFOAM -> CalculiX One-Way FSI Demonstrator",
+  "solvers": {
+    "openfoam": "Foundation 13",
+    "calculix": "2.17"
+  },
+  "mesh_qa": {
+    "openfoam_version": "13",
+    "cells": 309338,
+    "max_non_orthogonality_deg": 52.57537342,
+    "average_non_orthogonality_deg": 6.591143204,
+    "max_skewness": 2.418942527,
+    "mesh_ok": true,
+    "panel_yplus_min": 0.2441870703,
+    "panel_yplus_max": 69.43012067,
+    "panel_yplus_average": 8.824862625,
+    "near_wall_interpretation": "The y+ distribution spans multiple near-wall regimes. Near-wall resolution is therefore non-uniform and retained as an explicit modelling limitation."
+  },
+  "baseline_transfer": {
+    "force_x_cfd_n": 6.888325423611748,
+    "force_x_mapped_n": 6.9497471675961755,
+    "force_x_error_pct": 0.8916788944652084,
+    "root_moment_z_cfd_nm": -1.0329529730464675,
+    "root_moment_z_mapped_nm": -1.0423092802238594,
+    "root_moment_z_error_pct": 0.9057824917041013,
+    "force_vector_error_pct": 0.891683378139551
+  },
+  "structural_response": {
+    "solver": "CalculiX",
+    "version": "2.17",
+    "job_finished": true,
+    "pressure_sign": -1.0,
+    "tip_ux_mean_m": 0.004005812769230769,
+    "tip_ux_min_m": 0.004002654,
+    "tip_ux_max_m": 0.004008031,
+    "tip_ux_max_abs_m": 0.004008031,
+    "max_integration_point_von_mises_pa": 7105392.656178135,
+    "displacement_nodes_parsed": 403,
+    "stress_rows_parsed": 2880
+  },
+  "openfoam_force_crosscheck": {
+    "records_parsed": 96,
+    "final_force_sample_time": 950.0,
+    "openfoam_pressure_fx_last_n": 6.888328399,
+    "python_integrated_pressure_fx_n": 6.888325423611748,
+    "pressure_fx_crosscheck_error_pct": 4.319465281267242e-05,
+    "openfoam_pressure_mz_last_nm": -1.0329539335,
+    "python_integrated_pressure_mz_nm": -1.0329529730464675,
+    "pressure_mz_crosscheck_error_pct": 9.298134160464191e-05,
+    "last_20pct_pressure_fx_mean_n": 6.88833429709,
+    "last_20pct_pressure_fx_std_n": 6.556647563944467e-06,
+    "last_20pct_pressure_fx_cv_pct": 9.518480493483519e-05,
+    "last_20pct_pressure_mz_mean_nm": -1.032954772055,
+    "last_20pct_pressure_mz_std_nm": 9.207876875241698e-07,
+    "interpretation": "OpenFOAM pressure resultant is independently cross-checked against the Python-integrated pressure surface. Viscous contributions are not included in the Python pressure-transfer comparison."
+  },
+  "cfd_mesh_sensitivity": {
+    "medium_to_fine_fx_change_pct": 1.1925813426097394,
+    "medium_to_fine_mz_change_pct": 0.29468623606357863
+  },
+  "fea_mesh_sensitivity": {
+    "medium_to_fine_tip_change_pct": 0.06985860747674777,
+    "medium_to_fine_peak_vm_change_pct": 3.3534375731344026,
+    "interpretation": "Tip displacement shows strong mesh stability. Peak clamped-edge stress remains more mesh-sensitive."
+  },
+  "uniform_pressure_benchmark": {
+    "pressure_pa": 160.0,
+    "analytical_euler_bernoulli_tip_m": 0.0035217391304347826,
+    "analytical_euler_bernoulli_tip_mm": 3.5217391304347827,
+    "calculix_mean_tip_ux_m": 0.003334751769230769,
+    "calculix_mean_tip_ux_mm": 3.3347517692307687,
+    "calculix_max_abs_tip_ux_m": 0.003336499,
+    "tip_magnitude_difference_pct": 5.309517663817674,
+    "analytical_beam_root_stress_pa": 10800000.0,
+    "analytical_beam_root_stress_mpa": 10.8,
+    "calculix_max_integration_point_von_mises_pa": 5887557.650340604,
+    "note": "Euler-Bernoulli theory is an independent scale/trend benchmark. The CalculiX S4 shell solution is not expected to be numerically identical, and exact clamped-edge stress is mesh/singularity sensitive."
+  },
+  "acceptance": {
+    "transfer_force_limit_pct": 2.0,
+    "transfer_moment_limit_pct": 3.0,
+    "transfer_force_pass": true,
+    "transfer_moment_pass": true
+  },
+  "scope": {
+    "coupling": "one-way",
+    "deformation_feedback_to_cfd": false,
+    "one_way_adequacy_proven": false,
+    "note": "A deformed-geometry CFD rerun would be required to quantify posterior one-way adequacy."
+  }
+}

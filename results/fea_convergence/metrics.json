@@ -1,0 +1,28 @@
+{
+  "meshes": {
+    "coarse": {
+      "ny": 15,
+      "nz": 6,
+      "elements": 90,
+      "tip_ux_max_m": 0.004012808,
+      "max_integration_point_von_mises_pa": 6607442.435025938
+    },
+    "medium": {
+      "ny": 30,
+      "nz": 12,
+      "elements": 360,
+      "tip_ux_max_m": 0.004008031,
+      "max_integration_point_von_mises_pa": 7105392.656178135
+    },
+    "fine": {
+      "ny": 60,
+      "nz": 24,
+      "elements": 1440,
+      "tip_ux_max_m": 0.004005233,
+      "max_integration_point_von_mises_pa": 7351935.213996803
+    }
+  },
+  "medium_to_fine_tip_displacement_change_pct": 0.06985860747674777,
+  "medium_to_fine_max_vm_stress_change_pct": 3.3534375731344026,
+  "note": "Tip displacement is the preferred structural mesh-convergence metric. Peak clamped-edge shell stress may remain mesh/singularity sensitive."
+}

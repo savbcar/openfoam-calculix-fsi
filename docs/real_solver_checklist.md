@@ -12,5 +12,5 @@ Do not claim a numerical result from OpenFOAM or CalculiX until this checklist i
 - Run coarse/medium/fine CFD meshes and compare Fx, root Mz and mapped tip displacement.
 - Run CalculiX uniform-pressure benchmark before mapped load.
 - Confirm shell pressure sign by checking that positive net front pressure produces +x panel displacement.
-- Run coarse/medium/fine shell meshes and compare tip displacement, root reaction moment and stress away from the clamped singular edge.
+- Run coarse/medium/fine shell meshes and compare tip displacement and stress sensitivity; treat peak stress at the exact clamped edge cautiously because it may remain mesh/singularity sensitive.
 - Record exact solver versions and commit only generated plots/tables that were actually run.

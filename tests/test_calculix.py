@@ -37,3 +37,28 @@ def test_stress_parser(tmp_path):
     rows = parse_dat_stresses(path)
     assert len(rows) == 1
     assert rows[0]["von_mises_pa"] == 100.0
+
+
+
+def test_root_nset_wraps_at_16_entries(tmp_path):
+    mesh = structured_shell_mesh(0.3, 0.12, 60, 24)
+    surface = synthetic_surface(0.3, 0.12, 0.002, 36, 16, 160)
+    mapping = map_pressure(surface, mesh)
+
+    path = tmp_path / "fine_panel.inp"
+    write_calculix_input(path, mesh, mapping, 0.002, 69e9, 0.33, -1.0)
+
+    lines = path.read_text(encoding="utf-8").splitlines()
+
+    start = lines.index("*NSET, NSET=ROOT") + 1
+    end = lines.index("*BOUNDARY", start)
+    nset_lines = lines[start:end]
+
+    entries = []
+    for line in nset_lines:
+        values = [value.strip() for value in line.split(",") if value.strip()]
+        assert len(values) <= 16
+        entries.extend(values)
+
+    # nz=24 -> 25 root nodes.
+    assert len(entries) == 25

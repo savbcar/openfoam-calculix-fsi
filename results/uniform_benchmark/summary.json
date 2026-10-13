@@ -1,0 +1,13 @@
+{
+  "pressure_pa": 160.0,
+  "analytical_euler_bernoulli_tip_m": 0.0035217391304347826,
+  "analytical_euler_bernoulli_tip_mm": 3.5217391304347827,
+  "calculix_mean_tip_ux_m": 0.003334751769230769,
+  "calculix_mean_tip_ux_mm": 3.3347517692307687,
+  "calculix_max_abs_tip_ux_m": 0.003336499,
+  "tip_magnitude_difference_pct": 5.309517663817674,
+  "analytical_beam_root_stress_pa": 10800000.0,
+  "analytical_beam_root_stress_mpa": 10.8,
+  "calculix_max_integration_point_von_mises_pa": 5887557.650340604,
+  "note": "Euler-Bernoulli theory is an independent scale/trend benchmark. The CalculiX S4 shell solution is not expected to be numerically identical, and exact clamped-edge stress is mesh/singularity sensitive."
+}

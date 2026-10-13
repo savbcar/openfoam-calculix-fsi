@@ -21,6 +21,75 @@ The project is designed to demonstrate numerical-simulation judgement, solver co
 - Deterministic synthetic CFD surface data so the transfer stack, plots, report and CI can run without commercial/external solvers.
 - pytest, Ruff, GitHub Actions, Docker test environment, engineering notes and interview defence.
 
+<!-- VERIFIED_RESULTS_START -->
+
+## Verified real-solver results
+
+The full baseline workflow was executed locally on WSL using **OpenFOAM Foundation 13** and **CalculiX 2.17**.
+
+| Verification item | Result |
+|---|---:|
+| OpenFOAM cells | 309,338 |
+| `checkMesh` | PASS — Mesh OK |
+| max non-orthogonality | 52.58° |
+| max skewness | 2.419 |
+| panel y+ min / avg / max | 0.244 / 8.825 / 69.430 |
+| CFD pressure Fx | 6.888325 N |
+| mapped structural Fx | 6.949747 N |
+| force-transfer error | **0.892%** |
+| CFD root Mz | -1.032953 N·m |
+| mapped root Mz | -1.042309 N·m |
+| root-moment transfer error | **0.906%** |
+| OpenFOAM/Python pressure Fx cross-check | **0.000043%** |
+| OpenFOAM/Python pressure Mz cross-check | **0.000093%** |
+| CalculiX mean tip Ux | **4.0058 mm** |
+| CalculiX max tip Ux | **4.0080 mm** |
+| CFD medium→fine Fx change | 1.193% |
+| CFD medium→fine Mz change | 0.295% |
+| FEA medium→fine tip change | **0.070%** |
+| FEA medium→fine peak VM change | 3.353% |
+| uniform-load analytical tip | 3.5217 mm |
+| uniform-load CalculiX tip | 3.3348 mm |
+
+The baseline transfer satisfies the declared acceptance limits of **2% resultant-force error** and **3% root-moment error**.
+
+The corrected CalculiX pressure direction was independently verified: positive front-to-back pressure produces **+x structural displacement**.
+
+### Real-solver evidence
+
+#### CFD pressure mapped to the shell
+
+![Mapped CFD pressure](results/real/figures/mapped_pressure.png)
+
+#### Force and root-moment conservation
+
+![Conservation](results/real/figures/conservation.png)
+
+#### OpenFOAM pressure-force history
+
+![OpenFOAM force history](results/real/figures/force_history.png)
+
+#### CalculiX structural displacement
+
+![CalculiX displacement](results/real/figures/calculix_displacement.png)
+
+#### CalculiX shell-mesh sensitivity
+
+![FEA mesh sensitivity](results/fea_convergence/convergence.png)
+
+### Numerical interpretation
+
+The medium→fine CFD changes are approximately **1.19% in Fx** and **0.29% in root Mz**.
+
+The CalculiX shell study gives a medium→fine tip-displacement change of only **0.070%**. Peak clamped-edge von-Mises stress remains more mesh sensitive and is therefore not treated as a fully converged design stress.
+
+The panel y+ distribution spans **0.24–69.43**, with mean **8.82**. Near-wall resolution is consequently non-uniform and is retained as an explicit CFD modelling limitation.
+
+This demonstrator intentionally uses **one-way FSI**. Structural deformation is not fed back into the CFD mesh; therefore the project does not claim that deformation-feedback effects have been quantitatively proven negligible.
+
+<!-- VERIFIED_RESULTS_END -->
+
+
 ## Geometry and coordinates
 
 | Quantity | Baseline |
@@ -216,19 +285,15 @@ Your existing OpenFOAM 10 Docker image is not used by this project because the c
 
 - Pressure-only transfer; viscous shear is not mapped.
 - Baseline CFD is steady RANS. A bluff-plate wake may require transient time averaging.
-- `snappyHexMesh` layer success and y+ must be checked on the actual machine.
+- Panel y+ was measured during the real OpenFOAM campaign; its broad distribution is reported explicitly as a near-wall modelling limitation.
 - The native extractor assumes ASCII fields and a wall pressure represented by the owner-cell value (appropriate for the supplied zero-gradient wall p condition).
 - No two-way displacement feedback or moving mesh.
 - Root stress in a clamped shell can be mesh/singularity sensitive; compare converged section/reaction quantities and stresses away from the exact constraint edge.
-- CalculiX shell pressure direction must be sign-checked locally before reporting displacement direction; the deck geometry/order and configurable pressure sign are documented for this reason.
+- CalculiX shell pressure direction was sign-checked on the real solver run; the configurable sign convention remains documented for reproducibility.
 
-## CV bullet after the real solver campaign
+## CV bullet
 
-Use only after replacing placeholders with values actually produced on your machine:
-
-> Developed a one-way OpenFOAM->CalculiX CFD/FEA coupling workflow in Python, transferring non-uniform panel pressure to shell loads and verifying the interface using resultant-force and root-moment conservation; quantified CFD/FEA mesh sensitivity and validated structural response against analytical beam estimates.
-
-Do **not** add percentages, displacement, stress, cell counts or convergence claims until those real runs exist.
+> Developed and validated an auditable OpenFOAM 13→CalculiX one-way CFD/FEA coupling workflow in Python, transferring non-uniform aerodynamic pressure to S4 shell loads with 0.89% resultant-force and 0.91% root-moment transfer error on the baseline mesh; quantified CFD/FEA mesh sensitivity and supported the workflow with analytical structural checks, Docker, automated tests and multi-version CI.
 
 ## References / solver compatibility
 

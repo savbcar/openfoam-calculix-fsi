@@ -1,0 +1,16 @@
+{
+  "records_parsed": 96,
+  "final_force_sample_time": 950.0,
+  "openfoam_pressure_fx_last_n": 6.888328399,
+  "python_integrated_pressure_fx_n": 6.888325423611748,
+  "pressure_fx_crosscheck_error_pct": 4.319465281267242e-05,
+  "openfoam_pressure_mz_last_nm": -1.0329539335,
+  "python_integrated_pressure_mz_nm": -1.0329529730464675,
+  "pressure_mz_crosscheck_error_pct": 9.298134160464191e-05,
+  "last_20pct_pressure_fx_mean_n": 6.88833429709,
+  "last_20pct_pressure_fx_std_n": 6.556647563944467e-06,
+  "last_20pct_pressure_fx_cv_pct": 9.518480493483519e-05,
+  "last_20pct_pressure_mz_mean_nm": -1.032954772055,
+  "last_20pct_pressure_mz_std_nm": 9.207876875241698e-07,
+  "interpretation": "OpenFOAM pressure resultant is independently cross-checked against the Python-integrated pressure surface. Viscous contributions are not included in the Python pressure-transfer comparison."
+}

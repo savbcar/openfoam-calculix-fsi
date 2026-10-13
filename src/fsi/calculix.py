@@ -42,7 +42,13 @@ def write_calculix_input(
         "*SHELL SECTION, ELSET=EALL, MATERIAL=ALUMINIUM",
         f"{thickness:.12g}",
         "*NSET, NSET=ROOT",
-        ", ".join(str(int(n)) for n in roots),
+    ]
+    root_ids = [str(int(n)) for n in roots]
+    lines.extend(
+        ", ".join(root_ids[i : i + 16])
+        for i in range(0, len(root_ids), 16)
+    )
+    lines += [
         "*BOUNDARY",
         "ROOT, 1, 6, 0.0",
         "*STEP",

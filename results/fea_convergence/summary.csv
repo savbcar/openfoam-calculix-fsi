@@ -1,0 +1,4 @@
+mesh,ny,nz,elements,tip_ux_max_m,max_integration_point_von_mises_pa
+coarse,15,6,90,0.004012808,6607442.435025938
+medium,30,12,360,0.004008031,7105392.656178135
+fine,60,24,1440,0.004005233,7351935.213996803

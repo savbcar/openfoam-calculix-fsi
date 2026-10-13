@@ -1,0 +1,12 @@
+{
+  "openfoam_version": "13",
+  "cells": 309338,
+  "max_non_orthogonality_deg": 52.57537342,
+  "average_non_orthogonality_deg": 6.591143204,
+  "max_skewness": 2.418942527,
+  "mesh_ok": true,
+  "panel_yplus_min": 0.2441870703,
+  "panel_yplus_max": 69.43012067,
+  "panel_yplus_average": 8.824862625,
+  "near_wall_interpretation": "The y+ distribution spans multiple near-wall regimes. Near-wall resolution is therefore non-uniform and retained as an explicit modelling limitation."
+}

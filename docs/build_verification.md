@@ -42,3 +42,35 @@ Therefore no OpenFOAM force, CalculiX displacement/stress, real CFD/FEA mesh-con
 ## Required real-solver completion gates
 
 Run `docs/real_solver_checklist.md` on the target WSL machine before putting real CFD/FEA numbers on a CV. The supplied scripts are designed to make those checks reproducible rather than manual.
+
+## Subsequent local WSL real-solver verification — 2026-10-14
+
+The project was subsequently executed on the target WSL installation.
+
+Verified locally:
+
+- OpenFOAM Foundation 13.
+- CalculiX 2.17.
+- Real OpenFOAM mesh generation and solution.
+- `checkMesh`: Mesh OK.
+- Panel y+ evaluation.
+- Real OpenFOAM pressure extraction.
+- OpenFOAM force-function-object cross-check.
+- Python CFD-pressure integration.
+- CFD-to-FEA pressure mapping.
+- Resultant-force and root-moment conservation.
+- Correct CalculiX pressure direction.
+- Real CalculiX structural solution.
+- Coarse/medium/fine CFD mesh-sensitivity campaign.
+- Coarse/medium/fine CalculiX shell-mesh campaign.
+- Uniform-pressure analytical/CalculiX benchmark.
+- Ruff.
+- pytest.
+- Docker build/test.
+- Multi-version GitHub Actions CI.
+
+The CalculiX shell study produced 90, 360 and 1440 elements. Maximum tip displacement was 4.012808 mm, 4.008031 mm and 4.005233 mm respectively, corresponding to only 0.0699% medium-to-fine change.
+
+Peak integration-point von-Mises stress changes more strongly near the clamped edge and is retained as a mesh/singularity-sensitive quantity rather than presented as a fully converged design stress.
+
+The project remains intentionally one-way coupled. No deformed-geometry CFD feedback study is claimed.
